@@ -1,6 +1,8 @@
 initContainers:
   enabled: false
 
+appVersion: f1
+
 component: frontend
 service:
   type: LoadBalancer

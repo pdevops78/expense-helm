@@ -6,7 +6,6 @@ metadata:
     name: {{ .Values.component }}
     projectName: {{ .Chart.name }}
 spec:
-
   volumes:
     - name: secrets
       emptyDir:

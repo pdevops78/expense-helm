@@ -1,6 +1,6 @@
 initContainers:
   enabled: true
-
+appVersion: p1
 component: backend
 service:
   type: ClusterIP
