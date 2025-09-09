@@ -1,12 +1,10 @@
-initContainers:
-  enabled: false
-
 component: frontend
-appVersion: f1
-
 service:
   type: LoadBalancer
-  protocol: TCP
   port: 80
   targetPort: 80
 
+initContainers:
+  enabled: false
+
+appVersion: f1

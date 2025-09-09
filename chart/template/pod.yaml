@@ -6,14 +6,14 @@ metadata:
     appName: {{ .Values.component }}
     projectName: {{ .Chart.Name }}
 spec:
-{{- if .Values.initContainers.enabled }}
+  {{ if .Values.initContainers.enabled }}
   volumes:
     - name: secrets
       emptyDir:
         sizeLimit: 5Mi
   initContainers:
     - name: vault-secrets
-      image: pavanidevops78/kubernetes:p2
+      image: pavanidevops78/kubernetes:i1
       env:
         - name: VAULT_ADDR
           value: "https://vault-internal.pdevops78.online:8200"
@@ -23,7 +23,7 @@ spec:
               name: vault-token
               key: token
         - name: SECRET_NAME
-          value: common/{{ .Chart.name }}-{{ .Values.component }}
+          value: common/common
         - name: VAULT_SKIP_VERIFY
           value: "TRUE"
 
@@ -32,20 +32,23 @@ spec:
           mountPath: /data
 
     - name: schema
-      image: pavanidevops78/kubernetes:s7
+      image: pavanidevops78/kubernetes:b4
       volumeMounts:
         - name: secrets
           mountPath: /data
-{{- end }}
-
+  {{ end }}
   containers:
-    - name: {{ .Values.component }}
-      image: pavanidevops78/kubernetes:{{ .Values.appVersion }}
-{{- if .Values.initContainers.enabled }}
+    - name: backend
+      image: pavanidevops78/kubernetes:e2
+  {{ if .Values.initContainers.enabled }}
       volumeMounts:
         - name: secrets
           mountPath: /data
-{{- end }}
+  {{ end }}
+
+
+
+
 
 
 
