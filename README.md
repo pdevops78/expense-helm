@@ -53,3 +53,31 @@ vault:
 =====
 docker run -e VAULT_ADDR="https://vault-internal.pdevops78.online:8200" -e VAULT_TOKEN="" -e SECRET_NAME="common/common" -e VAULT_SKIP_VERIFY=true "<image-d>"
 
+
+prometheus:
+============
+Install prometheus helm chart
+=============================
+helm preometheus repo: https://prometheus-community.github.io/helm-charts
+helm install pstack oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack 
+
+with chart kube-prometheus-stack
+configuration for prometheus:
+--------------------------------
+prometheus:
+  ingress:
+     enabled: true
+     ingressClassName: nginx
+     annotations:
+        external-dns.alpha.kubernetes.io/hostname: prometheus-dev.pdevops78.online
+     hosts: 
+      - prometheus-dev.pdevops78.online
+
+same for alertmanager and grafana
+
+once configuration completed, install roboshop-load-gen
+
+     
+
+   
+
