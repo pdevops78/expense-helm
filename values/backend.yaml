@@ -1,7 +1,7 @@
 initContainers:
   enabled: true
 component: backend
-appVersion: p1
+appVersion: d3
 
 service:
   type: ClusterIP

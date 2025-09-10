@@ -33,7 +33,7 @@ spec:
           mountPath: /data
 
     - name: schema
-      image: pavanidevops78/kubernetes:s7
+      image: pavanidevops78/kubernetes:b4
       volumeMounts:
         - name: secrets
           mountPath: /data
