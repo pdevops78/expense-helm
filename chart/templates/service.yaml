@@ -8,11 +8,7 @@ spec:
     projectName: {{ .Chart.Name }}
   ports:
     - name: http
-      protocol: TCP
+      protocol: {{ .Values.service.protocol }}
       port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
   type: {{ .Values.service.type }}
-
-
-
-# ClusterIP service type is by default
