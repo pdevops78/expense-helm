@@ -23,7 +23,7 @@ spec:
               name: vault-token
               key: token
         - name: SECRET_NAME
-          value: common/{{ .Chart.name }}-{{ .Values.component }}
+          value: common/{{ .Chart.Name }}-{{ .Values.component }}
         - name: VAULT_SKIP_VERIFY
           value: "TRUE"
 
