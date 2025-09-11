@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: {{ .Values.component }}
   labels:
-    appName: {{ .Values.appName }}
+    appName: {{ .Values.component }}
     projectName: {{ .Chart.Name }}
 spec:
   {{ if .Values.initContainers.enabled }}
@@ -30,22 +30,20 @@ spec:
       volumeMounts:
         - name: vault-secret
           mountPath: /data
-
+  {{ end }}
     - name: schema
       image: pavanidevops78/kubernetes:b4
       volumeMounts:
         - name: vault-secret
           mountPath: /data
-  {{ end }}
   containers:
     - name: backend
-      image: pavanidevops78/kubernetes:x1
+      image: pavanidevops78/kubernetes:{{ .Values.appVersion }}
   {{ if .Values.initContainers.enabled }}
       volumeMounts:
         - name: vault-secret
           mountPath: /data
   {{ end }}
-
 
 
 # ClusterIP service type is by default
