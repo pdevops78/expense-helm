@@ -43,21 +43,7 @@ spec:
       volumeMounts:
         - name: vault-secret
           mountPath: /data
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend
-spec:
-  selector:
-    appName: backend
-    projectName: expense
-  ports:
-    - name: http
-      protocol: TCP
-      port: 80
-      targetPort: 8080
-  type: ClusterIP
+
 
 
 # ClusterIP service type is by default
