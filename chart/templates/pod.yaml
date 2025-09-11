@@ -40,9 +40,11 @@ spec:
   containers:
     - name: backend
       image: pavanidevops78/kubernetes:x1
+  {{- if .Values.initContainers.enabled }}
       volumeMounts:
         - name: vault-secret
           mountPath: /data
+  {{- end }}
 
 
 
