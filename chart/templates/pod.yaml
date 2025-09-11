@@ -37,7 +37,7 @@ spec:
         - name: vault-secret
           mountPath: /data
   containers:
-    - name: backend
+    - name: {{ .Values.component }}
       image: pavanidevops78/kubernetes:{{ .Values.appVersion }}
   {{ if .Values.initContainers.enabled }}
       volumeMounts:
