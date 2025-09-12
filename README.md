@@ -1,24 +1,6 @@
 # expense-helm
 
 
-chart.yaml:
-===========
-  apiVersion: v2
-  name: demo
-  version: 2.0.0
-  
-pod.yaml:
-========
-apiVersion: v1
-kind: Pod
-metadata:
- name: pod-01
-spec:
-  containers:
-    - name: nginx
-      image: nginx
-
-
 how to install helm ?
 helm install demo1 ./chart
 how to provide values dynamically
@@ -76,6 +58,35 @@ prometheus:
 same for alertmanager and grafana
 
 once configuration completed, install roboshop-load-gen
+
+
+newrelic:
+---------
+cd repos
+repos cd cav
+cav grep newrelic.* -R
+
+how to add environment variable in java 
+-Dnewrelic.config.licence_key=${licence_key} -jar 
+
+
+
+why nginx do not send metrics to prometheus dashboard?
+
+Nginx does not natively expose metrics in Prometheus format, so Prometheus cannot scrape Nginx metrics directly.
+
+stub_status provides plain-text metrics that are not compatible with Prometheus.
+To solve this, we use the Nginx Prometheus Exporter, which converts stub_status output into Prometheus format, making it possible to monitor Nginx in Prometheus and Grafana dashboards.
+
+🔁 Visual Summary:
+Nginx (stub_status - plain text)
+↓
+Nginx Prometheus Exporter (converts to Prometheus format)
+↓
+Prometheus (scrapes metrics)
+↓
+Grafana (visualizes in dashboard)
+
 
      
 
